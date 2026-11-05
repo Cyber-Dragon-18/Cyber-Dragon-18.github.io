@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Rodrigo · Portfolio
 
-## Getting Started
+My personal portfolio website: projects, tech stack, education and contact, in a dark terminal style.
 
-First, run the development server:
+**Live site:** https://cyber-dragon-18.github.io
+
+## Built with
+
+- [Next.js](https://nextjs.org) (App Router) and [React](https://react.dev)
+- [Tailwind CSS](https://tailwindcss.com)
+- [JetBrains Mono](https://www.jetbrains.com/lp/mono/) via `next/font`
+- Deployed to GitHub Pages with GitHub Actions, as a static export
+
+## Features
+
+- Two-column layout: a fixed intro column and a scrolling content column
+- Project cards with a "show all" toggle, so the page stays short as the list grows
+- Content kept separate from layout, so I edit one data file to update the site
+- Terminal details: command-style headings, blinking cursor, and my name encoded as DNA bases
+- Favicon, social preview image, custom 404 page, `robots.txt` and `sitemap.xml`
+
+## Run it locally
+
+You need Node.js 20.9 or later.
 
 ```bash
+git clone git@github.com:Cyber-Dragon-18/Cyber-Dragon-18.github.io.git
+cd Cyber-Dragon-18.github.io
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000. The page updates when you save a file.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+To build the static site into the `out/` folder:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/app/
+├── page.js          the page layout and sections
+├── data.js          all the content (about, projects, stack, education, links)
+├── ProjectList.js   the project grid with the "show all" button
+├── ProjectCard.js   one project card
+├── Tags.js          the small tag labels
+├── layout.js        fonts and site metadata
+├── globals.css      colors and animations
+├── not-found.js     the 404 page
+├── icon.svg         favicon
+└── opengraph-image.png   social preview image
+public/
+├── cv.pdf           CV, linked from the site
+└── projects/        project screenshots
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Updating the content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Text and links:** edit `src/app/data.js`.
+- **Add a project:** add an object to the `projects` array in `data.js`.
+- **Add a screenshot:** put the image in `public/projects/` and add `image: "/projects/<file>.png"` to that project.
+- **Colors:** change the variables at the top of `src/app/globals.css`.
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes the `out/` folder to GitHub Pages. In the repository settings, **Pages → Source** is set to **GitHub Actions**.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The Tailwind setup for Turbopack lives in `next.config.mjs`, together with the `output: "export"` setting that makes the site static.
+
+## Contact
+
+[GitHub](https://github.com/Cyber-Dragon-18) · [LinkedIn](https://www.linkedin.com/in/rodrigo-coelho-8b5222277/) · [Email](mailto:rodrimcoelho@gmail.com)
