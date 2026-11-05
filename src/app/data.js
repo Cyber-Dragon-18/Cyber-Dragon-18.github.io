@@ -18,8 +18,8 @@ export const about = [
 export const projects = [
   {
     title: "Logistics App for AEFCUP",
-    text: "Logistics management application for AEFCUP. Manages requests, shifts and attendance.",
-    tags: ["Go", "PostgreSQL"],
+    text: "Full-stack operations platform engineered in vanilla Go (net/http) and PostgreSQL to coordinate live event logistics.",
+    tags: ["Go", "PostgreSQL", "Cloudinary", "Render"],
     repo: "https://github.com/Cyber-Dragon-18/Logistica-AEFCUP",
   },
   {
@@ -67,6 +67,10 @@ export const education = [
   },
   {
     when: "Currently learning",
-    what: "Bioinformatics and molecular dynamics, from simulating proteins to analysing biological data at scale.",
+    what: "Molecular dynamics simulations and large-scale biological data pipelines for my MSc. On the side, studying digital forensics, memory analysis, and network packet inspection to prepare for technical forensic roles (Polícia Judiciária).",
   },
+  {
+    when: "Currently Building",
+    what: "Core gameplay mechanics, physics controllers, and systems architecture for an unannounced team game project inside our student nucleus."
+  }
 ];
