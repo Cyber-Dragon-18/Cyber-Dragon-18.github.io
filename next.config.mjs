@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  output: "export",          // builds a static site into the "out" folder
+  images: { unoptimized: true },
+
   reactCompiler: true,
   turbopack: {
     rules: {

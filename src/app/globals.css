@@ -1,26 +1,61 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0a0e0d;      /* near-black with a green tint */
+  --ink: #d6e4dc;     /* main text */
+  --muted: #7f948b;   /* secondary text */
+  --line: #1f2d29;    /* borders */
+  --panel: #111917;   /* cards */
+  --a: #3ddc97;       /* terminal green: the main accent */
+  --c: #f5a524;       /* amber */
+  --g: #5aa9ff;       /* blue */
+  --t: #ff6b8b;       /* pink */
 }
 
+/* makes bg-bg, text-ink, border-line, font-body, ... available as Tailwind classes */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-panel: var(--panel);
+  --color-a: var(--a);
+  --color-c: var(--c);
+  --color-g: var(--g);
+  --color-t: var(--t);
+  --font-display: var(--font-mono-var), ui-monospace, monospace;
+  --font-body: var(--font-mono-var), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html { scroll-behavior: smooth; color-scheme: dark; }
+body { background: var(--bg); color: var(--ink); }
+::selection { background: var(--a); color: var(--bg); }
+/* visible keyboard focus on every link and button */
+:focus-visible {
+  outline: 2px solid var(--a);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+/* DNA letters fade in one by one */
+.seq-letter { opacity: 0; animation: seq-in 0.4s forwards; }
+@keyframes seq-in { to { opacity: 1; } }
+
+/* blinking terminal cursor */
+.cursor {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.85em;
+  margin-left: 0.12em;
+  background: var(--a);
+  vertical-align: -0.05em;
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .seq-letter { animation: none; opacity: 1; }
+  .cursor { animation: none; }
+  html { scroll-behavior: auto; }
 }
