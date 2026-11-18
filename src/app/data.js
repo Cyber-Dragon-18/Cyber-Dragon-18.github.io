@@ -46,6 +46,12 @@ export const projects = [
     tags: ["Go", "PostgreSQL", "Hardware integration"],
     status: "Still in development",
   },
+  {
+    title: "Room Dashboard",
+    text: "A dashbord to control my smartlights and help me organize my day-to-day life.",
+    tags: ["Go", "PostgresSQL"],
+    status: "Still in development",
+  }
 ];
 
 export const stack = [
